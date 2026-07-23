@@ -48,3 +48,6 @@ out/
 _site/
 *.css
 !petclinic.css
+
+### Resultados de pruebas de carga (no versionar) ###
+performance/results/2026-07-22_22h12/
