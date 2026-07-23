@@ -1,6 +1,8 @@
 HELP.md
 pom.xml.bak
 target/
+# Local test private key - never commit
+test-private-key.pem
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
