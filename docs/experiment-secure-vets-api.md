@@ -413,7 +413,40 @@ diferencia_porcentual = ((p95_modernizado - p95_legado) / p95_legado) * 100
 
 ---
 
-## 18. Riesgos y limitaciones
+## 18. Características técnicas del entorno de pruebas
+
+Todas las corridas de carga y pruebas automatizadas se ejecutaron en la siguiente máquina, sin cargas externas concurrentes.
+
+### Hardware
+
+| Componente | Detalle |
+|------------|---------|
+| Equipo | ASUS ROG Zephyrus G16 GU605MI |
+| CPU | Intel Core Ultra 9 185H — 16 núcleos físicos / 22 hilos lógicos — base 2.5 GHz |
+| RAM | 32 GB DDR5 |
+| Almacenamiento | SSD NVMe Micron MTFDKBA1T0QFM — 1 TB |
+
+### Software
+
+| Componente | Versión |
+|------------|---------|
+| Sistema operativo | Windows 11 Pro 25H2 (build 26200) — 64 bits |
+| JDK | Oracle JDK 21.0.10 (build 21.0.10+8-LTS-217, HotSpot Server VM) |
+| Spring Boot | 4.1.0 |
+| k6 | v2.0.0 (go1.26.3, windows/amd64) |
+| Maven | 3.9.11 |
+| Base de datos (pruebas) | H2 2.4.240 (in-memory, perfil `default`) |
+
+### Consideraciones de validez
+
+- La JVM y el servidor Tomcat se ejecutaron en el mismo proceso que las pruebas de carga k6, lo que puede inflar ligeramente la latencia en comparación con un entorno aislado.
+- Las corridas se realizaron con la JVM ya calentada (una corrida previa de 1 minuto no incluida en los resultados).
+- No se ejecutaron otras cargas de trabajo significativas durante las corridas.
+- Los resultados son representativos del entorno de desarrollo local, no de producción.
+
+---
+
+## 19. Riesgos y limitaciones del experimento
 
 | Riesgo | Impacto | Mitigación |
 |--------|---------|------------|
@@ -425,7 +458,7 @@ diferencia_porcentual = ((p95_modernizado - p95_legado) / p95_legado) * 100
 
 ---
 
-## 19. Decisión final del experimento
+## 20. Decisión final del experimento
 
 **CONTINUAR** — todos los criterios verificables se cumplen.
 
@@ -471,7 +504,7 @@ Estado de los criterios verificables:
 
 ---
 
-## 20. Procedimiento de reversión
+## 21. Procedimiento de reversión
 
 Para revertir completamente el experimento sin afectar el comportamiento legado:
 
