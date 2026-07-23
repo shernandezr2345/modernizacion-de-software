@@ -27,6 +27,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledInNativeImage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.security.oauth2.server.resource.autoconfigure.web.OAuth2ResourceServerWebSecurityAutoConfiguration;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.test.context.aot.DisabledInAotMode;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
@@ -41,7 +42,8 @@ import java.util.Optional;
  * @author Colin But
  * @author Wick Dynex
  */
-@WebMvcTest(VisitController.class)
+@WebMvcTest(value = VisitController.class,
+		excludeAutoConfiguration = { OAuth2ResourceServerWebSecurityAutoConfiguration.class })
 @DisabledInNativeImage
 @DisabledInAotMode
 class VisitControllerTests {
